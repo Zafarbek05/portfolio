@@ -1,11 +1,10 @@
 import React from "react";
 import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
-import { it } from "node:test";
 import { gridItems } from "@/data";
 
 const Grid = () => {
   return (
-    <section>
+    <section id="about">
       <BentoGrid>
         {gridItems.map(
           ({
@@ -13,8 +12,8 @@ const Grid = () => {
             title,
             description,
             className,
-            img,
             imgClassName,
+            img,
             titleClassName,
             spareImg,
           }) => (

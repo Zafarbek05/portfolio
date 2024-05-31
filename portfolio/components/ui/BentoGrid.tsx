@@ -1,4 +1,5 @@
 import { cn } from "@/utils/cn";
+import { BackgroundGradientAnimation } from "./GradientBg";
 
 export const BentoGrid = ({
   className,
@@ -41,20 +42,53 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "relative row-span-1 rounded-3xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4 ",
+        "row-span-1 relative rounded-3xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4 ",
         className
       )}
       style={{
-        background: "rgb(4,7,29)",
-        backgroundColor: `background: rgb(0,0,0),
-background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(31,31,31,1) 36%, rgba(69,79,82,1) 58%, rgba(149,157,158,1) 84%, rgba(177,184,183,1) 100%)`,
+        background: "rgb(4,7,32)",
+        backgroundColor: `background: rgb(16,23,54);
+background: linear-gradient(90deg, rgba(16,23,54,1) 0%, rgba(35,39,54,1) 37%, rgba(35,39,55,1) 100%);`,
       }}
     >
+      <div className={`${id === 6} && 'flex justify-center h-full`}>
+        <div className="w-full h-full absolute">
+          {img && (
+            <img
+              src={img}
+              className={cn(imgClassName, "object-cover, object-center")}
+            />
+          )}
+        </div>
+        <div
+          className={`absolute right-0 -bottom-5 ${
+            id === 5 && "w-full opacity-80"
+          }`}
+        >
+          {spareImg && (
+            <img
+              src={spareImg}
+              className="object-cover object-center h-full w-full"
+            />
+          )}
+        </div>
+      </div>
       <div className="group-hover/bento:translate-x-2 transition duration-200">
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
         </div>
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
+          {description}
+        </div>
+      </div>
+      {id === 6 && (
+        <div>
+          <BackgroundGradientAnimation className="absolute z-50 items-center justify-center flex text-white font-bold" />
+        </div>
+      )}
+
+      <div className={cn(titleClassName, 'group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10')}>
+        <div>
           {description}
         </div>
       </div>
